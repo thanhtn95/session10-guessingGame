@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+        let arr = [];
+        for(let i =0; i <101;i++){
+            arr.push(i);
+        }
+        console.log(arr);
+
+        function getMagicNumber() {
+            return Math.floor(Math.random()*100);
+        }
+        function binarySearch(num,arr) {
+          let l =0;
+          let r = arr.length-1;
+          let count=1;
+          while(l<=r){
+              let m = l+Math.floor((r-l)/2);
+              console.log(m);
+              if(arr[m] == num){
+                  console.log('BinarySearch : '+count+' turn');
+                  break;
+              }
+              count++;
+              if(arr[m]>num){
+                  r = m-1;
+              }else {
+                  l =m+1;
+              }
+          }
+        }
+        function linearSearch(num,arr){
+            let count =1;
+            for(let i =0; i<arr.length;i++){
+                if(arr[i] == num){
+                    console.log('BinarySearch : '+count+' turn');
+                    break;
+                }else count++;
+            }
+        }
+
+        let number = parseInt(prompt("Enter a number from 0-100 to search :"))
+        console.log('Magic number: '+number);
+        let time1 = new Date().getTime();
+        binarySearch(number,arr);
+        let time2 = new Date().getTime();
+        console.log('Binary Search Execute time :'+(time2-time1));
+        time1 = new Date().getTime();
+        linearSearch(number,arr);
+        time2 = new Date().getTime();
+        console.log('Linear Search Execute time :'+(time2-time1));
+</script>
+</body>
+</html>
